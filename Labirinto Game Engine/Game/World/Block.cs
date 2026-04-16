@@ -4,16 +4,26 @@ namespace GameEngine
 {
     public class Block
     {
-        public Vector2[] vertices = new Vector2[4];
+        public Vector3[] vertices;
 
-        public Block(Vector2 position, float size = 0.5f)
+        public Vector2[] texCoord =
         {
-            vertices = new Vector2[]
+            new Vector2(0, 0),
+            new Vector2(1f / 2f, 0),
+            new Vector2(1f / 2f, 1f),
+            new Vector2(0, 1f),
+        };
+
+
+        public Block(Vector3 position)
+        {
+            float size = 0.5f;
+            vertices = new Vector3[]
             {
-            new Vector2(position.X - size, position.Y - size), // bottom-left
-            new Vector2(position.X + size, position.Y - size), // bottom-right
-            new Vector2(position.X + size, position.Y + size), // top-right
-            new Vector2(position.X - size, position.Y + size) // top-left
+            new Vector3(position.X - size, position.Y - size, 0), // bottom-left
+            new Vector3(position.X + size, position.Y - size, 0), // bottom-right
+            new Vector3(position.X + size, position.Y + size, 0), // top-right
+            new Vector3(position.X - size, position.Y + size, 0), // top-left
             };
         }
     }

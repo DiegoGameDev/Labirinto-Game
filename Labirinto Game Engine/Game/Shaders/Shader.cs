@@ -35,12 +35,11 @@ namespace GameEngine.Shaders
         }
 
         public void Use() => GL.UseProgram(Handle);
-
         public void Uniform1(double value, string name) => GL.Uniform1(GL.GetUniformLocation(Handle, name), value);
         public void Uniform2(Vector2 value, string name) => GL.Uniform2(GL.GetUniformLocation(Handle, name), value);
         public void Uniform3(Vector3 value, string name) => GL.Uniform3(GL.GetUniformLocation(Handle, name), value);
         public void Uniform4(Vector4 value, string name) => GL.Uniform4(GL.GetUniformLocation(Handle, name), value);
 
-        public void Mat4(Matrix4 value, string name) => GL.UniformMatrix4(GL.GetUniformLocation(Handle, name), false, ref value);
+        public void Mat4(Matrix4 value, string name) => GL.UniformMatrix4(GL.GetUniformLocation(Handle, name), true, ref value);
     }
 }

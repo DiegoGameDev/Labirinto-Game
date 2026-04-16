@@ -7,6 +7,15 @@ public class VBO
 {
     int vbo = 0;
 
+    public VBO(Vector3[] data, int index)
+    {
+        vbo = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
+        GL.BufferData(BufferTarget.ArrayBuffer, data.Length * Vector3.SizeInBytes, data, BufferUsageHint.StaticDraw);
+        GL.VertexAttribPointer(index, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+        GL.EnableVertexAttribArray(index);
+    }
+
     public VBO(Vector2[] data, int index)
     {
         vbo = GL.GenBuffer();
