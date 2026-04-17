@@ -27,27 +27,31 @@ namespace GameEngine
             0, 2, 3,
         };
 
-        public World(int Width, int Height)
+        public World(WorldData data)
         {
-            Size.X = Width;
-            Size.Y = Height;
-
+            Size = data.size;
             blocks = new Block[Size.X, Size.Y];
 
-            texture = new Texture(@"C:\Users\DiegoMogger\source\repos\Labirinto Game Engine\Labirinto Game Engine\Game\Shaders\Texture Resources\sla.png");
+            texture = new Texture("Insert Your path");
             texture.Use();
 
             vAO = new VAO();
             vAO.Bind();
 
+            UpdateWorld(data);
+        }
+
+        public void UpdateWorld(WorldData data)
+        {
             uint index = 0;
             for (int x = 0; x < Size.X; x++)
             {
                 for (int y = 0; y < Size.Y; y++)
                 {
-                    blocks[x,y] = new Block(new Vector3(x, y, 0));
+                    blocks[x, y] = new Block(new Vector3(x, y, 0), data.blocks[x, y]);
+
                     vertices.AddRange(blocks[x, y].vertices);
-                    texCoords.AddRange(blocks[x, y].texCoord);
+                    texCoords.AddRange(blocks[x, y].texCoordData);
 
                     indices.Add(index + 0);
                     indices.Add(index + 1);

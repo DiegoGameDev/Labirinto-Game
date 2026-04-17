@@ -6,16 +6,10 @@ namespace GameEngine
     {
         public Vector3[] vertices;
 
-        public Vector2[] texCoord =
-        {
-            new Vector2(0, 0),
-            new Vector2(1f / 2f, 0),
-            new Vector2(1f / 2f, 1f),
-            new Vector2(0, 1f),
-        };
+        public Vector2[] texCoordData;
 
 
-        public Block(Vector3 position)
+        public Block(Vector3 position, FaceBlockType faceBlockType = FaceBlockType.Ground2)
         {
             float size = 0.5f;
             vertices = new Vector3[]
@@ -25,6 +19,10 @@ namespace GameEngine
             new Vector3(position.X + size, position.Y + size, 0), // top-right
             new Vector3(position.X - size, position.Y + size, 0), // top-left
             };
+
+            texCoordData = FaceData.TexCoordsForFaceData[faceBlockType].ToArray();
         }
     }
+
+
 }

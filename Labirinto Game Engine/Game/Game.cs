@@ -35,7 +35,7 @@ namespace GameEngine
         {
             GL.ClearColor(Color4.Black);
 
-            world = new World(50, 50);
+            world = new World(WorldDataGenerator.ReadData("InsertYourpath"));
 
             shaderDefaut = new Shader(@"C:\Users\DiegoMogger\source\repos\Labirinto Game Engine\Labirinto Game Engine\Game\Shaders\ShaderObjects\Default.vert"
                 , @"C:\Users\DiegoMogger\source\repos\Labirinto Game Engine\Labirinto Game Engine\Game\Shaders\ShaderObjects\Default.frag");
